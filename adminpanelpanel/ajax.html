@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+<script  type="text/javascript">
+
+function getdetails(){
+
+  $.ajax({url: "http://localhost/adminpanelpanel/getdata.php",
+  success: function(results){
+  data=JSON.parse(results);
+  console.log(data);
+  
+  }
+});
+
+
+
+
+$('#myTable').DataTable( {
+
+   "ajax":'http://localhost/adminpanelpanel/getdata.php',
+    columns: [
+        { data: 'first_name' },
+        { data: 'last_name' },
+         {data: 'email' },
+        { data: 'phone' },
+        { data: 'degree'},
+        { data: 'fee' }
+    ]
+} );
+
+
+
+
+
+
+
+}
+</script>
+
+
+
+
+
+
+<title>Page Title</title>
+</head>
+<body>
+
+<button onclick="getdetails()">GETSTUDENTDATA</button>
+<table id="myTable">
+<thead>
+ <tr>
+<th>first_name</th>
+<th>last_name</th>
+<th>email</th>
+<th>phone</th>
+<th>degree</th>
+<th>fee</th>
+ </tr>
+</thead>
+
+</table>
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+</body>
+</html>
